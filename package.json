@@ -1,0 +1,26 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main",
+  "git": "https://github.com/mgechev/electron-typescript-boilerplate",
+  "scripts": {
+    "start": "gulp start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "@types/electron": "^1.6.10",
+    "del": "^6.0.0",
+    "electron": "^11.2.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1"
+  },
+  "dependencies": {
+    "fs-jetpack": "^4.1.0"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": "kioskbackoffice",
+  "version": "1.0.9",
+  "description": "Kiosk backoffice",
+  "author": "Hyperfiction",
+  "main": "dist/main",
+  "scripts": {
+    "dev": "gulp dev --color",
+    "build": "gulp build --color",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-proposal-private-methods": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "astroturf": "^0.9.16",
+    "babel-plugin-emotion": "^10.0.19",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "del": "^5.0.0",
+    "electron": "^5.0.6",
+    "electron-builder": "^21.1.1",
+    "electron-connect": "^0.6.3",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject-string": "^1.1.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-update-version": "^1.0.2",
+    "node-sass": "^4.12.0",
+    "postcss-modules": "^1.4.1",
+    "rxjs": "^6.5.2"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "adbkit": "^2.11.1",
+    "archiver": "^3.1.1",
+    "classnames": "^2.2.6",
+    "core-js": "^3.2.1",
+    "electron-json-storage": "^4.2.0",
+    "emotion": "^10.0.17",
+    "fs-jetpack": "^2.2.2",
+    "image-size": "^0.8.3",
+    "lodash": "^4.17.19",
+    "p-queue": "^6.6.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dnd": "^11.1.3",
+    "react-dnd-html5-backend": "^11.1.3",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-sortable-tree": "^2.8.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./src/extraResources/",
+        "to": "extraResources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}
