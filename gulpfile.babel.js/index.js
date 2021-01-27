@@ -1,1 +1,1 @@
-export {start} from './start';
+export {dev, build} from './tasks';

@@ -1,25 +1,39 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
-var url_1 = __importDefault(require("url"));
-var electron_1 = require("electron");
-var window_1 = __importDefault(require("./helpers/window"));
-electron_1.app.on('ready', function () {
-    var mainWindow = window_1.default('main', {
-        width: 100,
-        height: 600
-    });
-    mainWindow.loadURL(url_1.default.format({
-        pathname: path_1.default.join(__dirname, 'app.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
-    if (process.env.NODE_ENV === 'development') {
-    }
+
+var _path = _interopRequireDefault(require("path"));
+
+var _url = _interopRequireDefault(require("url"));
+
+var _electron = require("electron");
+
+var _window = _interopRequireDefault(require("./helpers/window"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+_electron.app.whenReady().then(function () {
+  var mainWindow = (0, _window["default"])('main', {
+    width: 1000,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    },
+    frame: false,
+    resizable: true
+  });
+  mainWindow.loadURL(_url["default"].format({
+    pathname: _path["default"].join(__dirname, '../renderer/index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  if (process.env.NODE_ENV === 'development') {
+    var _require = require('electron-connect'),
+        client = _require.client;
+
+    client.create(mainWindow);
+  }
 });
-electron_1.app.on('window-all-closed', function () {
-    electron_1.app.quit();
+
+_electron.app.on('window-all-closed', function () {
+  _electron.app.quit();
 });
