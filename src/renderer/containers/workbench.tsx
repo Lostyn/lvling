@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
+import Batteur from '../components/batteur';
+
 class Workbench extends Component {
     render() {
-        return ( <div>coucou</div> );
+        return ( <Batteur/> );
     }
 }
 

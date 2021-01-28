@@ -12,7 +12,7 @@ app.whenReady().then(
             webPreferences: {
                 nodeIntegration: true
             },
-            frame: false,
+            frame: true,
             resizable: true
         });
     

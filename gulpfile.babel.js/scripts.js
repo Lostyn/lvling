@@ -14,14 +14,15 @@ class Scripts {
 
     compile() {
         return gulp.src(paths.src.scripts[this.scope])
-            .pipe(babel({
+            .pipe(babel(/*{
                 presets: [
                     "@babel/preset-typescript",
                     "@babel/preset-react"
                   ],
                   plugins: [
+                    "@babel/plugin-proposal-class-properties"
                   ]
-            }))
+            }*/))
             .pipe( gulp.dest(paths.dest.scripts[this.scope]));
     }
 }

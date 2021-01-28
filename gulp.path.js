@@ -1,4 +1,4 @@
-const script = "**/*.ts?(x)";
+const script = "**/*.{js,ts,tsx}";
 
 export default {
     src: {
@@ -8,6 +8,7 @@ export default {
             main: `src/main/${script}`,
             renderer: `src/renderer/${script}`,
         },
+        static: `src/renderer/static/**/*`,
     },
     dest: {
         renderer: 'dist/renderer',
@@ -16,6 +17,7 @@ export default {
             main: 'dist/main',
             renderer: 'dist/renderer',
         },
+        static: `dist/renderer/static`,
     },
     release: {
         output: 'release'

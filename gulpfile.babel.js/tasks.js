@@ -6,6 +6,7 @@ import scripts from "./scripts";
 import server from "./server";
 import styles from './styles';
 import pack from './pack';
+import staticAssets from './static';
 
 function clean() {
     return del('dist');
@@ -23,6 +24,7 @@ const prepare = gulp.series(
     gulp.parallel(
         template,
         styles,
+        staticAssets,
         gulp.series(
             scripts.main.scripts,
             scripts.renderer.scripts
