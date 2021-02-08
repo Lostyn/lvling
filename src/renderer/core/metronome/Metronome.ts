@@ -10,7 +10,7 @@ export default class Metroname extends EventEmitter {
         super();
 
         this.setTempo(tempo);
-        this.intervalWorker = new Worker('core/InternalWorker.js');
+        this.intervalWorker = new Worker('core/metronome/InternalWorker.js');
         this.intervalWorker.onmessage = this.onMessageHandler;
     }
 

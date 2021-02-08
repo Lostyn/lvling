@@ -4,9 +4,13 @@ import url from 'url';
 import { app, BrowserWindow } from "electron";
 import createWindow from './helpers/window'
 
+app.commandLine.appendSwitch('enable-web-bluetooth', true);
+
+let mainWindow:BrowserWindow = null;
+
 app.whenReady().then(
     function() {
-        var mainWindow : BrowserWindow = createWindow('main', {
+        mainWindow = createWindow('main', {
             width: 1000,
             height: 600, 
             webPreferences: {

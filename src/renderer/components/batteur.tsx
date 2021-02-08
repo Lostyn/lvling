@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Metronome from '../core/Metronome';
+import Metronome from '../core/metronome/Metronome';
 
 type BatteurState = {
     play: boolean

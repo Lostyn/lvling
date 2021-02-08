@@ -3,8 +3,17 @@ import React, { Component } from "react";
 import Batteur from '../components/batteur';
 
 class Workbench extends Component {
+    
+    requestBluetooth = (e) => {
+        
+    }
+
     render() {
-        return ( <Batteur/> );
+        return ( 
+            <>
+                <button onClick={this.requestBluetooth}>connect</button>
+            </>
+        );
     }
 }
 
