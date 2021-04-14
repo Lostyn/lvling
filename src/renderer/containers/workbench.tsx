@@ -1,20 +1,15 @@
 import React, { Component } from "react";
+import ServiceProvider from "../core/serviceContext";
+import App from "./app";
 
-import Batteur from '../components/batteur';
+const Workbench = props => {
+    const {services} = props;
 
-class Workbench extends Component {
-    
-    requestBluetooth = (e) => {
-        
-    }
-
-    render() {
-        return ( 
-            <>
-                <button onClick={this.requestBluetooth}>connect</button>
-            </>
-        );
-    }
+    return ( 
+        <ServiceProvider services={services}>
+            <App />
+        </ServiceProvider>
+    );
 }
 
 export default Workbench;

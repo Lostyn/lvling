@@ -5,9 +5,24 @@ import { render } from "react-dom";
 import Workbench from "./containers/workbench";
 
 function startup() {
-    const container = append(document.body, $("div#workbench"));
+    createServices()
+        .then( services => {
+            const container = append(document.body, $("div#workbench"));
+            const props = {
+                services,
+                container
+            }
+            render( <Workbench {...props}/>, container )
+        })
+    
+}
 
-    render( <Workbench />, container )
+function createServices() {
+    return Promise.all([
+
+    ]).then( services => ({
+        sampleService: null
+    }))
 }
 
 startup();
