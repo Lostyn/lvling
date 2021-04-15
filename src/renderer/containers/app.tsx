@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withServices } from '../core/serviceContext'
-import ZoneInfo from '../layout/ZoneInfo';
+import Guide from '../layout/Guide';
+import Notes from '../layout/Notes';
 import { MessageTypes, LogEntry } from '../services/ClientLogService';
 
 interface IAPPProps {
@@ -29,7 +30,8 @@ class App extends Component<IAPPProps> {
     render() {
         return (
             <div>
-                <ZoneInfo />
+                <Notes />
+                <Guide />
             </div>
         )
     }

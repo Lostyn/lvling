@@ -44,17 +44,17 @@ Always be going up
 Free Navali when you find her
 > Proceed to the Prison
 
-zone:Lower Prison
+zone:The Lower Prison
 > Go to town at the Waypoint
 > Take the portal you left to find the Flooded Depths
 ---------------
 There is a trial in this zone that you can do later thanks to the Waypoint
 Try right first for the exit
 > Go to Upper Prison
-_______________
+---------------
 G,TRIAL:  Spike traps
 
-zone:Upper Prison
+zone:The Upper Prison
 Try left first.
 < Kill Brutus and Logout
 + Pick up Gems
@@ -64,7 +64,7 @@ zone:Prisoner's Gate
 Look for the side of the road that has the ledge down, usually on the right side
 > Go to Ship Graveyard.
 
-zone:Ship Graveyard
+zone:The Ship Graveyard
 Look for Waypoint first
 If you find The Cave get the All Flame now
 Otherwise continue directly to Cavern of Wrath Waypoint
@@ -79,7 +79,7 @@ Up your cold resistance (2x Sapphire ring)
 + Passive from Bestel
 > TP To Cavern of Wrath
 
-zone:Cavern of Wrath
+zone:The Cavern of Wrath
 If you didn't find Allflame yet
 > At Waypoint port back to The Ship Graveyard to find the Cave
 ---------------
@@ -91,7 +91,7 @@ Right time to get 2x Sapphire rings
 ---------------
 > Go to Cavern of Anger
 
-zone:Cavern of Anger
+zone:The Cavern of Anger
 Often bottom right
 You can follow the spirits
 If you see piles of gold you're close to Merveil
