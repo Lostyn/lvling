@@ -14,11 +14,11 @@ Stick to the right side following the wall
 Activate Waypoint
 > Go to Mud Flats first
 
-zone:Mud Flats
+zone:The Mud Flats
 Little rivers connect the 3 items
 > Go to Submerged
 
-zone:Submerged Passage
+zone:The Submerged Passage
 Find Waypoint
 > TP to The Coast and go to Tidal Island for Quicksilver Flask quest
 ---------------
@@ -29,7 +29,7 @@ We will be back for Deep Dweller boss later
 Search below the bridge for the entrance to the Flooded Depths
 > Go to Flooded Depths and kill the big crab
 
-zone:Tidal Island
+zone:The Tidal Island
 The side without a cliff is the shortest
 < Kill the Boss and Logout
 + Get Quicksilver and all gems needed for lvl 4

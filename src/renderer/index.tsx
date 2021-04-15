@@ -4,6 +4,7 @@ import { render } from "react-dom";
 
 import Workbench from "./containers/workbench";
 import { registerOtherServices } from './services';
+import { ClientLog } from "./services/ClientLogService";
 
 function startup() {
     createServices()
@@ -22,14 +23,14 @@ function startup() {
 
 function createServices() {
     return Promise.all([
-        createClientService()
+        createClientLog()
     ]).then( services => ({
-        logWatcher: services[0]
+        clientLog: services[0]
     }))
 }
 
-function createClientService() {
-    return null;
+function createClientLog() {
+    return ClientLog;
 }
 
 startup();
