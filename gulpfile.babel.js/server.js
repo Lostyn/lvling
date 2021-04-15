@@ -34,6 +34,7 @@ export default function server(done) {
     electron.start(callback);
 
     // Watch main process
+    gulp.watch(paths.src.scripts.ipc, gulp.series(scripts.ipc.scripts, restart));
     gulp.watch(paths.src.scripts.main, gulp.series(scripts.main.scripts, restart));
 
     // Watch renderer process

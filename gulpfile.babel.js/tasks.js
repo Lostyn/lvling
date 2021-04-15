@@ -26,6 +26,7 @@ const prepare = gulp.series(
         styles,
         staticAssets,
         gulp.series(
+            scripts.ipc.scripts,
             scripts.main.scripts,
             scripts.renderer.scripts
         )

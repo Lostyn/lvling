@@ -3,10 +3,13 @@ import { append, $} from './browser/dom';
 import { render } from "react-dom";
 
 import Workbench from "./containers/workbench";
+import { registerOtherServices } from './services';
 
 function startup() {
     createServices()
         .then( services => {
+            registerOtherServices();
+            
             const container = append(document.body, $("div#workbench"));
             const props = {
                 services,
@@ -19,10 +22,14 @@ function startup() {
 
 function createServices() {
     return Promise.all([
-
+        createClientService()
     ]).then( services => ({
-        sampleService: null
+        logWatcher: services[0]
     }))
+}
+
+function createClientService() {
+    return null;
 }
 
 startup();

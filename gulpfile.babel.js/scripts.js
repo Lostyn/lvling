@@ -29,6 +29,7 @@ class Scripts {
 
 export default {
     main: new Scripts("main"),
-    renderer: new Scripts("renderer")
+    renderer: new Scripts("renderer"),
+    ipc: new Scripts("ipc")
 };
   

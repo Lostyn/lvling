@@ -5,6 +5,7 @@ export default {
         template: 'src/renderer/index.html',
         styles: "src/**/*.{sass,scss}",
         scripts: {
+            ipc: `src/ipc/${script}`,
             main: `src/main/${script}`,
             renderer: `src/renderer/${script}`,
         },
@@ -14,6 +15,7 @@ export default {
         renderer: 'dist/renderer',
         style: 'index.css',
         scripts: {
+            ipc: 'dist/ipc',
             main: 'dist/main',
             renderer: 'dist/renderer',
         },
