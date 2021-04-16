@@ -49,7 +49,6 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
             }
         }
 
-        console.log(this.details);
         this.forceUpdate();
     }
 

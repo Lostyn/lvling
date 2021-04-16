@@ -6,7 +6,6 @@ import { config } from "./config";
 import { PoeWindow } from './PoeWindow'
 
 export let overlayWindow: BrowserWindow | undefined
-
 export async function createOverlayWindow () {
     overlayWindow = new BrowserWindow({
         //icon: path.join('static/icon.png'),

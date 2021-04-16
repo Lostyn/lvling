@@ -41,11 +41,17 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
 
     getColor(text:string) :string {
         switch (text.slice(0, 2)) {
-            case 'G,': return "green";
-            case 'R,': return "red";
-            case 'B,': return "blue";
-            default: return "white";
+            case 'R,': return "#ff1744aa";
+            case 'G,': return "#64ffdaaa";
+            case 'B,': return "#2196F3aa";
+            default: return "";
         }
+    }
+
+    cleanText(text:string) :string {
+        return text.replace('R,', '')
+                .replace('G,', '')
+                .replace('B,', '');
     }
 
     render() {
@@ -59,8 +65,8 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
                     {guide.split('\n').map( (s, i) => {
                         const text = s.trim();
                         if (text.length > 0) {
-                            const style = { color : this.getColor(text) }
-                            return (<p key={i} style={style}>{text}</p>)
+                            const style = { backgroundColor : this.getColor(text) }
+                            return (<p key={i} style={style}>{this.cleanText(text)}</p>)
                         }
                     })}
                 </div>

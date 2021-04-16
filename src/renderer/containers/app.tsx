@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { config } from '../../main/config';
 import { withServices } from '../core/serviceContext'
 import Guide from '../layout/Guide';
 import Notes from '../layout/Notes';
@@ -19,7 +20,7 @@ class App extends Component<IAPPProps> {
 
     handleLevel = (evt: CustomEvent<LogEntry>) : void => {
         console.log("level", evt);
-        if (evt.detail.charName == ME) {
+        if (evt.detail.charName == config.get("characterName")) {
             this.setState({
                 level: evt.detail.level
             })

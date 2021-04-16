@@ -1,9 +1,11 @@
 export interface Config {
     fontSize: number,
-    windowTitle: string
+    windowTitle: string,
+    characterName: string,
 }
 
 export const defaultConfig: Config = {
     fontSize: 16,
-    windowTitle: "Fork"
+    windowTitle: "Fork",
+    characterName: ""
 }
