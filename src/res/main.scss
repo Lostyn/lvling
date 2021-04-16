@@ -29,6 +29,37 @@ p {
   }
 }
 
+.layout-gem {
+  position: absolute;
+
+  & .layout-gem-zone {
+    background-color: #343434dd;
+    color: white;
+    padding: 5px 5px 5px 20px;
+    border-bottom: 1px solid white;
+  }
+
+  & .layout-gem-detail {
+    color: white;
+    font-size: 0.7rem;
+
+    & .link {
+      margin: 10px 0px;
+      & > div {
+        padding: 2px 5px;
+        display: flex;
+        align-items: center;
+        
+        & > img {
+          width: 20px;
+          height: 20px; 
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
 .layout-guide {
   position: absolute;
   background: #34343477;

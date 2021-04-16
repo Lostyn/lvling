@@ -1,0 +1,17 @@
+level: 2
+R:Ground Slam, R:Ruthless
+
+level: 4
+R:Ground Slam, R:Ruthless, R:Chance to Bleed
+R:Blood and Sand
+R:War Banner
+R:Molten Shell
+
+level: 8
+R:Ground Slam, R:Ruthless, R:Chance to Bleed
+R:Blood and Sand
+R:War Banner
+G:Precision
+R:Leap Slam
+R:Molten Shell
+R:Intimidating Cry
