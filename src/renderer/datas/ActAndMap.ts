@@ -24,10 +24,12 @@ const TownToAct = [
     "Oriath Docks"
 ]
 
-export function findActFromTown(town: string) : string {
-    return "Act " + (TownToAct.findIndex( o => o === town) + 1);
+export function findActFromTown(town: string) : number {
+    const index = TownToAct.findIndex( o => o === town);
+    if (index < 0) return 0;
+    return index + 1;
 }
 
-export function findActFromZone(zone: string) : string {
-    return "Act " + (ZoneToAct.findIndex( o => o.includes(zone)) + 1);
+export function findActFromZone(zone: string) : number {
+    return (ZoneToAct.findIndex( o => o.includes(zone)) + 1);
 }

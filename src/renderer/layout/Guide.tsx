@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { withServices } from '../core/serviceContext';
 import { MessageTypes, LogEntry } from '../services/ClientLogService';
-import { findActFromZone } from '../datas/ActAndMap';
+import { findActFromTown, findActFromZone } from '../datas/ActAndMap';
 interface IZoneInfoProps {
     clientLog: EventTarget
 }
 
 interface IZoneInfoState {
-    act?: string,
+    act?: number,
     guide?: string
 }
 
@@ -16,7 +16,7 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
         super(props);
 
         this.state = {
-            act: "Act 1"
+            act: 1
         }
         this.props.clientLog.addEventListener(MessageTypes.ZONE, this.handleZone);
         
@@ -24,7 +24,7 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
     }
 
     async LoadAndParseDetails() {
-        const res = await fetch(`static/${this.state.act}/guide.txt`);
+        const res = await fetch(`static/Act ${this.state.act}/guide.txt`);
         this.setState({
             guide: await res.text()
         });
@@ -34,9 +34,12 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
 
     handleZone = (evt: CustomEvent<LogEntry>) : void => {
         console.log("zone", evt);
-        this.setState({
-            act: findActFromZone(evt.detail.zone)
-        }, this.LoadAndParseDetails );
+        const nextAct = findActFromTown(evt.detail.zone);
+        if (nextAct > this.state.act) {
+            this.setState({
+                act: findActFromZone(evt.detail.zone)
+            }, this.LoadAndParseDetails );
+        }
     }
 
     getColor(text:string) :string {
@@ -60,7 +63,7 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
 
         return (
             <div className="layout-guide">
-                <div className="layout-guide-zone">{act}</div>
+                <div className="layout-guide-zone">Act {act}</div>
                 <div className="layout-guide-detail">
                     {guide.split('\n').map( (s, i) => {
                         const text = s.trim();
