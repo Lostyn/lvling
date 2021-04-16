@@ -1,12 +1,27 @@
-import { IpcMain } from "electron";
-import * as log from 'electron-log';
+import path from 'path'
+import { app } from 'electron'
+import winston from 'winston'
 
-export function register(ipcMain: IpcMain):void {
-    ipcMain.on('log', (evt, level, message, ...args) => {
-        log[level](message, ...args);
-        evt.returnValue = true;
-    });
+export const logger = winston.createLogger({
+  format: winston.format.json(),
+  defaultMeta: { source: 'etc' },
+  transports: [
+    new winston.transports.File({
+      filename: path.join(app.getPath('userData'), 'apt-data', 'logs.txt'),
+      options: { flags: 'w' }
+    })
+  ]
+})
 
-    log.transports.file.level = 'info';
-    Object.assign(console, log.functions);
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format((info) => ({ ...info }))(),
+      winston.format.colorize({ level: true }),
+      winston.format.printf((info) => {
+        const { source, level, message, ...meta } = info
+        return `${level} [${source}]: ${message} ${JSON.stringify(meta)}`
+      })
+    )
+  }))
 }
