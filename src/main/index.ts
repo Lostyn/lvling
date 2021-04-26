@@ -1,11 +1,13 @@
 import path from 'path';
 import url from 'url';
 import os from 'os'
-import { createOverlayWindow } from './overlay-window'
+import { createOverlayWindow, overlayWindow } from './overlay-window'
 
 import { app, screen, Display, BrowserWindow, ipcMain, protocol } from 'electron';
 import { logger } from './helpers/log'
 import LogWatcher from './services/LogWatcher';
+import { registerCommands } from './shortcuts';
+import * as ipc from '../ipc/ipc-events'
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -15,6 +17,10 @@ if (!app.requestSingleInstanceLock()) {
 
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true}}]);
 app.allowRendererProcessReuse = true;
+
+const toggleGems = () => overlayWindow!.webContents.send(ipc.TOGGLE_GEMS);
+const toggleGuide = () => overlayWindow!.webContents.send(ipc.TOGGLE_GUIDE);
+const toggleNote = () => overlayWindow!.webContents.send(ipc.TOGGLE_NOTE);
 
 app.on('ready', async () => {
     logger.info('App is running', {
@@ -32,11 +38,15 @@ app.on('ready', async () => {
     })
 
     //
+    registerCommands('F2', toggleGems);
+    registerCommands('F3', toggleGuide);
+    registerCommands('F4', toggleNote);
 
     //
     setTimeout(
         async () => {
             await createOverlayWindow();
+            //setupShortcuts();
             LogWatcher.start();
         }
     );

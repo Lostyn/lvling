@@ -14,7 +14,7 @@ function startup() {
     createServices()
         .then( services => {
             // log from IpcMain
-            registerOtherServices();
+            registerOtherServices(store.dispatch);
             
             const container = append(document.body, $("div#workbench"));
             const props = {

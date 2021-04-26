@@ -22,7 +22,6 @@ export async function createOverlayWindow () {
     });
     
     overlayWindow.setIgnoreMouseEvents(true);
-    overlayWindow.webContents.on('before-input-event', handleExtraCommands)
 
     overlayWindow.loadURL(url.format({
         pathname: path.join(__dirname, '../renderer/index.html'),
@@ -62,11 +61,4 @@ function handleOverlayAttached(hasAccess?: boolean) {
             'It is required to create a transparent overlay window.'
         )
     }
-}
-
-export function handleExtraCommands (event: Electron.Event, input: Electron.Input) {
-    console.log(input);
-    if (input.type !== 'keyDown') return;
-    let { code, control: ctrlKey, shift: shiftKey, alt: altKey } = input;
-
 }

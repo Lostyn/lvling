@@ -59,7 +59,6 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
     render() {
         const { zone } = this.props;
         const detail = this.details.find( o => o.zone.includes(zone) || zone.includes(o.zone));
-        console.log(zone);
         if (detail == null) return <div />;
 
         return (

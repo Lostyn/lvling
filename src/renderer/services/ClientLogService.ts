@@ -2,7 +2,6 @@
 // 2021/04/12 15:26:27 22795093 bb3 [INFO Client 11736] : OnePrct (Marauder) is now level 23
 
 import { Dispatch } from 'redux'
-import { registerOtherServices } from '.';
 import { setLevel, setZone } from '../store/Progress';
 
 // 'channel.trade': /^\$(?: You have entered <(?<guild_tag>.+?)> )?(?<char_name>.+?): (?<body>.+)$/,

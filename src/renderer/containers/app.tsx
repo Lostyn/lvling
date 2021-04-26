@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import { config } from '../../main/config';
 import { withServices } from '../core/serviceContext'
-import Gems from '../layout/Gems';
-import Guide from '../layout/Guide';
-import Notes from '../layout/Notes';
-import { MessageTypes, LogEntry } from '../services/ClientLogService';
+import Gems from '../components/Gems';
+import Guide from '../components/Guide';
+import Notes from '../components/Notes';
+import { connect } from 'react-redux';
+import { RootState } from '../store';
 
 interface IAPPProps {
-    clientLog: EventTarget
+    clientLog: EventTarget,
+    gems: boolean,
+    guide: boolean,
+    note: boolean,
 }
 
 class App extends Component<IAPPProps> {
@@ -17,14 +20,19 @@ class App extends Component<IAPPProps> {
 
 
     render() {
+        const { gems, guide, note } = this.props;
         return (
             <div>
-                <Notes />
-                <Guide />
-                <Gems />
+                { note && <Notes /> }
+                { guide && <Guide /> }
+                { gems && <Gems /> }
             </div>
         )
     }
 }
 
-export default withServices(App);
+const mapState = (state: RootState) => ({
+    ...state.layout
+})
+
+export default connect(mapState)(withServices(App));
