@@ -1,4 +1,4 @@
-level: 2
+level: 1
 R:Ground Slam, R:Ruthless
 
 level: 4

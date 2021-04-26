@@ -10,22 +10,9 @@ interface IAPPProps {
     clientLog: EventTarget
 }
 
-const ME: string = "SplLvlTest"
-
 class App extends Component<IAPPProps> {
     constructor(props) {
         super(props);
-
-        this.props.clientLog.addEventListener(MessageTypes.LEVEL, this.handleLevel);
-    }
-
-    handleLevel = (evt: CustomEvent<LogEntry>) : void => {
-        console.log("level", evt);
-        if (evt.detail.charName == config.get("characterName")) {
-            this.setState({
-                level: evt.detail.level
-            })
-        }
     }
 
 

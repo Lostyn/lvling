@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { withServices } from '../core/serviceContext';
-import { MessageTypes, LogEntry } from '../services/ClientLogService';
-import { findActFromTown, findActFromZone } from '../datas/ActAndMap';
+import { connect } from 'react-redux';
+import { RootState } from '../store';
 interface IZoneInfoProps {
-    clientLog: EventTarget
+    clientLog: EventTarget,
+    act: number
 }
 
 interface IZoneInfoState {
-    act?: number,
     guide?: string
 }
 
@@ -16,30 +16,19 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
         super(props);
 
         this.state = {
-            act: 1
+            guide: ""
         }
-        this.props.clientLog.addEventListener(MessageTypes.ZONE, this.handleZone);
         
         this.LoadAndParseDetails();
     }
 
     async LoadAndParseDetails() {
-        const res = await fetch(`static/Act ${this.state.act}/guide.txt`);
+        const res = await fetch(`static/Act ${this.props.act}/guide.txt`);
         this.setState({
             guide: await res.text()
         });
         
         this.forceUpdate();
-    }
-
-    handleZone = (evt: CustomEvent<LogEntry>) : void => {
-        console.log("zone", evt);
-        const nextAct = findActFromTown(evt.detail.zone);
-        if (nextAct > this.state.act) {
-            this.setState({
-                act: findActFromZone(evt.detail.zone)
-            }, this.LoadAndParseDetails );
-        }
     }
 
     getColor(text:string) :string {
@@ -58,7 +47,8 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
     }
 
     render() {
-        const { guide, act } = this.state;
+        const { guide } = this.state;
+        const { act } = this.props;
         if (guide == null) return <div />;
 
         return (
@@ -79,4 +69,8 @@ class Guide extends Component<IZoneInfoProps, IZoneInfoState> {
 }
 
 
-export default withServices(Guide);
+const mapState = (state: RootState) => ({
+    act: state.progress.act
+})
+
+export default connect(mapState)(withServices(Guide));

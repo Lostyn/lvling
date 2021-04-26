@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import { withServices } from '../core/serviceContext';
-import { MessageTypes, LogEntry } from '../services/ClientLogService';
+import { RootState } from '../store';
 interface IZoneInfoProps {
-    clientLog: EventTarget
+    clientLog: EventTarget,
+    act: number,
+    zone: string
 }
 
-interface IZoneInfoState {
-    act: string,
-    zone?: string
-}
+interface IZoneInfoState { }
 
 class ZoneDetail {
     zone: string;
@@ -21,18 +21,13 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            act: "Act 1"
-        }
-        this.props.clientLog.addEventListener(MessageTypes.ZONE, this.handleZone);
         
         this.LoadAndParseDetails();
     }
 
     async LoadAndParseDetails() {
         this.details = [];
-        const res = await fetch(`static/${this.state.act}/notes.txt`);
+        const res = await fetch(`static/Act ${this.props.act}/notes.txt`);
         const data = await res.text();
         const lines = data.split('\n');
         let line;
@@ -52,13 +47,6 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
         this.forceUpdate();
     }
 
-    handleZone = (evt: CustomEvent<LogEntry>) : void => {
-        console.log("zone", evt);
-        this.setState({
-            zone: evt.detail.zone
-        });
-    }
-
     getColor(text:string) :string {
         switch (text.slice(0, 2)) {
             case 'G,': return "green";
@@ -69,8 +57,9 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
     }
 
     render() {
-        const { zone } = this.state;
-        const detail = this.details.find( o => o.zone.includes(zone));
+        const { zone } = this.props;
+        const detail = this.details.find( o => o.zone.includes(zone) || zone.includes(o.zone));
+        console.log(zone);
         if (detail == null) return <div />;
 
         return (
@@ -90,5 +79,9 @@ class Notes extends Component<IZoneInfoProps, IZoneInfoState> {
     }
 }
 
+const mapState = (state: RootState) => ({
+    act: state.progress.act,
+    zone: state.progress.zone
+})
 
-export default withServices(Notes);
+export default connect(mapState)(withServices(Notes));

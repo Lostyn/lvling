@@ -5,14 +5,20 @@ import { render } from "react-dom";
 import Workbench from "./containers/workbench";
 import { registerOtherServices } from './services';
 import { ClientLog } from "./services/ClientLogService";
+import { createStore } from "redux";
+import reducers from "./store";
+
+const store = createStore(reducers);
 
 function startup() {
     createServices()
         .then( services => {
+            // log from IpcMain
             registerOtherServices();
             
             const container = append(document.body, $("div#workbench"));
             const props = {
+                store,
                 services,
                 container
             }
@@ -30,7 +36,7 @@ function createServices() {
 }
 
 function createClientLog() {
-    return ClientLog;
+    return ClientLog.setDispatcher(store.dispatch);
 }
 
 startup();

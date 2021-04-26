@@ -4,14 +4,16 @@ import { MessageTypes, LogEntry } from '../services/ClientLogService';
 import { config } from '../../main/config';
 import { registerOtherServices } from '../services';
 import gems from '../datas/Gems';
+import { connect, RootStateOrAny } from 'react-redux';
+import { ProgressState } from '../store/Progress';
+import { RootState } from '../store';
 
 interface IZoneInfoProps {
-    clientLog: EventTarget
-}
-
-interface IZoneInfoState {
+    clientLog: EventTarget,
     level?: number
 }
+
+interface IZoneInfoState { }
 
 class LevelDetail {
     level: number;
@@ -23,12 +25,7 @@ class Gems extends Component<IZoneInfoProps, IZoneInfoState> {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            level: 0
-        }
-        this.props.clientLog.addEventListener(MessageTypes.LEVEL, this.handleLevel);
-        
+    
         this.LoadAndParseDetails();
     }
 
@@ -52,15 +49,6 @@ class Gems extends Component<IZoneInfoProps, IZoneInfoState> {
         }
 
         this.forceUpdate();
-    }
-
-    handleLevel = (evt: CustomEvent<LogEntry>) : void => {
-        console.log("level", evt);
-        if (evt.detail.charName == config.get('characterName')) {
-            this.setState({
-                level: evt.detail.level
-            });
-        }
     }
 
     getColor(text:string) :string {
@@ -98,13 +86,13 @@ class Gems extends Component<IZoneInfoProps, IZoneInfoState> {
     
 
     render() {
-        const { level } = this.state;
+        const { level } = this.props;
         let detail: LevelDetail = null;
         for(var i = 0; i < this.details.length; i++) {
             if (this.details[i].level <= level)
                 detail = this.details[i];
         }
-
+        
         if (detail == null) return <div />
 
         return (
@@ -118,5 +106,8 @@ class Gems extends Component<IZoneInfoProps, IZoneInfoState> {
     }
 }
 
+const mapState = (state: RootState) => ({
+    level: state.progress.level
+})
 
-export default withServices(Gems);
+export default connect(mapState)(withServices(Gems));

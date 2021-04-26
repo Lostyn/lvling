@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
 import ServiceProvider from "../core/serviceContext";
 import App from "./app";
 
 const Workbench = props => {
-    const {services} = props;
+    const {store, services} = props;
 
     return ( 
-        <ServiceProvider services={services}>
-            <App />
-        </ServiceProvider>
+        <Provider store={store}>
+            <ServiceProvider services={services}>
+                <App />
+            </ServiceProvider>
+        </Provider>
     );
 }
 

@@ -1,4 +1,4 @@
-const ZoneToAct = [
+export const ZoneToAct = [
     [ "The Twilight Strand", "The Coast", "The Tidal Island", "The Mud Flats", "The Fetid Pool", "The Submerged Passage", "The Flooded Depths", "The Ledge", "The Climb", "The Lower Prison", "The Upper Prison", "Prisoner's Gate", "The Ship Graveyard", "The Cavern of Wrath", "The Ship Graveyard Cave", "The Cavern of Anger", "Lioneye's Watch" ],
     [ "The Southern Forest", "The Old Fields", "The Den", "The Crossroads", "The Chamber of Sins Level 1", "The Riverways", "The Fellshrine Ruins", "The Broken Bridge", "The Chamber of Sins Level 2", "The Crypt Level 1", "The Western Forest", "The Weaver's Chambers", "The Crypt Level 2", "The Wetlands", "The Vaal Ruins", "The Dread Thicket", "The Northern Forest", "The Caverns", "The Ancient Pyramid", "The Forest Encampment" ],
     [ "The City of Sarn", "The Slums", "The Crematorium", "The Sewers", "The Marketplace", "The Catacombs", "The Battlefront", "The Solaris Temple Level 1", "The Solaris Temple Level 2", "The Ebony Barracks", "The Lunaris Temple Level 1", "The Docks", "The Lunaris Temple Level 2", "The Imperial Gardens", "The Library", "The Archives", "The Sceptre of God", "The Upper Sceptre of God", "The Sarn Encampment" ],
@@ -11,7 +11,7 @@ const ZoneToAct = [
     [ "The Cathedral Rooftop", "The Ravaged Square", "The Torched Courts", "The Desecrated Chambers", "The Canals", "The Control Blocks", "The Feeding Trough", "The Reliquary", "The Ossuary", "Oriath Docks" ]
 ]
 
-const TownToAct = [
+export const TownToAct = [
     "Lioneye's Watch" ,
     "The Forest Encampment",
     "The Sarn Encampment",
